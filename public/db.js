@@ -1,5 +1,5 @@
 let db
-const request = indexedDB.open('blog', 1)
+const request = indexedDB.open('budget', 1)
 
 request.onupgradeneeded = event => {
   db = event.target.result
@@ -19,7 +19,7 @@ request.onerror = event => {
 }
 
 
-const savePost = post => {
+const saveRecord = post => {
   const transaction = db.transaction(['pending'], 'readwrite')
   const store = transaction.objectStore('pending')
   store.add(post)
